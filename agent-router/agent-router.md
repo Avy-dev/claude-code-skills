@@ -17,7 +17,7 @@ Manual agent routing command. Parse the first word of `$ARGUMENTS` as a subcomma
 
    **If `help` or no arguments provided:** Print the following and stop:
    ```
-   Agent Router v1.0.0 — automatic and manual sub-agent dispatch.
+   Agent Router — automatic and manual sub-agent dispatch. (Run /agent-router version for current version.)
 
    Usage: /agent-router <command> [arguments]
 
@@ -68,7 +68,7 @@ Manual agent routing command. Parse the first word of `$ARGUMENTS` as a subcomma
    - Otherwise, announce: `Force-routing to <agent-name> — <task summary>`
    - Dispatch using the `Task` tool with `subagent_type` set to the canonical agent name (use `Explore` and `Plan` with capital letters for those two) and `model: "opus"`.
    - After completion, follow the post-change tracking protocol:
-     1. Discover modified files using `git diff --name-only` and `git ls-files --others --exclude-standard`. If not in a git repo, rely on the agent's output.
+     1. Discover modified files using `git diff --name-only` and `git ls-files --others --exclude-standard`. If both are empty, fall back to `git diff --name-only HEAD~1` to catch committed changes. If not in a git repo, rely on the agent's output.
      2. If `files_modified` is empty, skip tracking.
      3. Read `~/.claude/projects/<current-project-key>/context-gardner-state.json`.
      4. If `agent_router_tracking` does not exist, create it: `{ "modifications": [] }`.

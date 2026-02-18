@@ -65,7 +65,7 @@ Always set `model: "opus"` on every `Task` tool invocation. No exceptions.
 
 After each agent completes, discover which files were modified:
 
-1. **Discover modified files** — Run `git diff --name-only` to detect modified tracked files, and `git ls-files --others --exclude-standard` to detect new untracked files. Combine both lists. If not in a git repo, ask the dispatched agent to end its response with a "Files modified:" line listing every file it changed.
+1. **Discover modified files** — Run `git diff --name-only` to detect modified tracked files, and `git ls-files --others --exclude-standard` to detect new untracked files. Combine both lists. If both are empty (e.g. because the agent committed its changes), fall back to `git diff --name-only HEAD~1` to detect files changed in the most recent commit. If not in a git repo, ask the dispatched agent to end its response with a "Files modified:" line listing every file it changed.
 2. **Skip if empty** — If no files were modified, skip tracking entirely. Do not create empty tracking entries.
 3. **Read state** — Read the project-level state file at `~/.claude/projects/<current-project-key>/context-gardner-state.json` (the same path Claude Code uses for project-scoped `.claude/` files, where the project key is the escaped directory path). If the file is missing or contains invalid JSON, start with `{}`.
 4. **Initialize if needed** — If `agent_router_tracking` does not exist in the state object, create it: `"agent_router_tracking": { "modifications": [] }`.
