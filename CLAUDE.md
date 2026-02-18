@@ -15,8 +15,14 @@ bash agent-router/install.sh
 # Copy project-level agent templates to current project
 bash agent-router/install.sh --init-project
 
-# Uninstall
+# Uninstall agent-router
 bash agent-router/install.sh --uninstall
+
+# Install context-gardner skill (session-resume rule and all commands)
+bash context-gardner/install.sh
+
+# Uninstall context-gardner
+bash context-gardner/install.sh --uninstall
 ```
 
 ## Architecture
@@ -54,6 +60,28 @@ The primary skill — provides automatic and manual routing to specialized sub-a
 **State Tracking:**
 
 Modifications are tracked in `~/.claude/projects/<project-key>/context-gardner-state.json` under the `agent_router_tracking` key. After 10+ modifications, suggests running `/context-gardner review`.
+
+### Context Gardner Skill (v1.0.0)
+
+Memory file management and session persistence.
+
+**Components:**
+
+| File | Installed To | Purpose |
+|------|--------------|---------|
+| `session-resume.md` | `~/.claude/rules/` | Always-on rule for autonomous working memory |
+| `context-gardner.md` | `~/.claude/commands/` | Dispatcher for all `/context-gardner` subcommands |
+| `checkpoint.md` | `~/.claude/commands/` | Capture and persist session context |
+| `review-memory.md` | `~/.claude/commands/` | Autonomous review with proposal + approval |
+| `prune-memory.md` | `~/.claude/commands/` | Automated pruning with approval |
+| `move-memory.md` | `~/.claude/commands/` | Move sections between memory files |
+| `overflow.md` | `~/.claude/commands/` | Move detailed MEMORY.md sections to topic files |
+| `pin.md` | `~/.claude/commands/` | Pin entries to protect from pruning |
+| `restore.md` | `~/.claude/commands/` | List and restore pre-modification snapshots |
+
+**Session Resume Rule:**
+
+The `session-resume.md` rule runs on every user message. It reads `session-context.md` from the project auto memory directory and uses compact-and-write mode to keep the file under 75 lines. Cross-session staleness checks flag entries older than 4 hours.
 
 ## Adding New Skills
 

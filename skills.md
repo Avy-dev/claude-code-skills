@@ -30,13 +30,23 @@ Custom skills installed for Claude Code. Each skill lives in its own subdirector
   - `bash install.sh --uninstall` — Remove all installed symlinks
 - **Integration:** Tracks modifications in project-level `context-gardner-state.json` under the `agent_router_tracking` key. Suggests `/context-gardner review` after 10+ modifications since last review.
 
-### Context Gardner
-- **Directory:** (built-in, lives in `~/.claude/commands/`)
-- **Purpose:** Memory file management — review, prune, move, and pin entries across CLAUDE.md and auto-memory files.
+### Context Gardner (v1.0.0)
+- **Directory:** `context-gardner/`
+- **Purpose:** Memory file management and session persistence. Review, prune, move, and pin entries across CLAUDE.md and auto-memory files. Includes a session-resume rule for autonomous working memory.
 - **Components:**
-  - `context-gardner.md` — Dispatcher command
+  - `session-resume.md` — Always-on rule (loaded into every conversation via `~/.claude/rules/`)
+  - `context-gardner.md` — Dispatcher command (via `~/.claude/commands/`)
+  - `checkpoint.md` — Capture session context before it's lost
   - `review-memory.md` — Autonomous review with proposal + approval
   - `prune-memory.md` — Automated pruning with approval
   - `move-memory.md` — Move sections between memory files
+  - `overflow.md` — Move detailed MEMORY.md sections to topic files
   - `pin.md` — Pin entries to protect from pruning
+  - `restore.md` — List and restore pre-modification snapshots
+  - `VERSION` — Version tracking
+  - `install.sh` — Installer (supports `--uninstall`)
 - **Usage:** `/context-gardner <subcommand> [arguments]`
+- **Install:**
+  - `bash context-gardner/install.sh` — Install rule and all commands
+  - `bash context-gardner/install.sh --uninstall` — Remove all installed symlinks
+- **Integration:** Agent Router tracks modifications in `context-gardner-state.json` and suggests `/context-gardner review` after 10+ changes.
