@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # remote-install.sh — One-liner installer for Claude Code Skills
-# Usage: curl -fsSL https://raw.githubusercontent.com/USER/claude-code-skills/main/remote-install.sh | bash
+# Usage: curl -fsSL https://raw.githubusercontent.com/Avy-dev/claude-code-skills/main/remote-install.sh | bash
 
 set -euo pipefail
 
 # Configuration
-REPO_URL="${CLAUDE_SKILLS_REPO:-https://github.com/USER/claude-code-skills.git}"
+REPO_URL="${CLAUDE_SKILLS_REPO:-https://github.com/Avy-dev/claude-code-skills.git}"
 INSTALL_DIR="${CLAUDE_SKILLS_DIR:-$HOME/.claude/skills}"
 
 # Colors

@@ -6,11 +6,11 @@ Custom skills that extend [Claude Code](https://claude.ai/code) with specialized
 
 ```bash
 # Clone and install
-git clone https://github.com/USER/claude-code-skills.git ~/.claude/skills
+git clone https://github.com/Avy-dev/claude-code-skills.git ~/.claude/skills
 bash ~/.claude/skills/install.sh
 
 # Or one-liner (update REPO_URL in remote-install.sh first)
-curl -fsSL https://raw.githubusercontent.com/USER/claude-code-skills/main/remote-install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/Avy-dev/claude-code-skills/main/remote-install.sh | bash
 ```
 
 ## What's Included
