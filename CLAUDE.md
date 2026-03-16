@@ -9,21 +9,26 @@ This repository contains custom skills for Claude Code. Skills extend Claude Cod
 ## Installation Commands
 
 ```bash
-# Install agent-manager skill (rule, command, and user-level agents)
-bash agent-manager/install.sh
+# Install all skills (unified installer)
+bash install.sh
+
+# Install specific skill only
+bash install.sh agent-manager
+
+# Show installation status
+bash install.sh --status
+
+# Update to latest
+bash install.sh --update
 
 # Copy project-level agent templates to current project
-bash agent-manager/install.sh --init-project
+bash install.sh --init-project
 
-# Uninstall agent-manager
-bash agent-manager/install.sh --uninstall
-
-# Install context-plane skill (session-resume rule and all commands)
-bash context-plane/install.sh
-
-# Uninstall context-plane
-bash context-plane/install.sh --uninstall
+# Uninstall all skills
+bash install.sh --uninstall
 ```
+
+Individual skill installers (`agent-manager/install.sh`, `context-plane/install.sh`) still work standalone.
 
 ## Architecture
 
@@ -87,6 +92,9 @@ The `session-resume.md` rule runs on every user message. It reads `session-conte
 
 Follow the existing pattern:
 1. Create a subdirectory for the skill
-2. Include `VERSION` file
-3. Create `install.sh` that symlinks files to appropriate `~/.claude/` subdirectories
-4. Update `skills.md` registry
+2. Create `skill.json` manifest declaring rules, commands, agents, hooks
+3. Include `VERSION` file with semver string
+4. Create `install.sh` for standalone installation (optional but recommended)
+5. Add skill name to `skills.json` at repo root
+
+See `agent-manager/skill.json` for manifest format reference.

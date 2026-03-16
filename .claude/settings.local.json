@@ -30,7 +30,26 @@
       "Bash(git remote set-url:*)",
       "Bash(gh repo edit:*)",
       "Bash(git -C /Users/prateekbhardwaj/Desktop/Skills add:*)",
-      "Bash(git -C /Users/prateekbhardwaj/Desktop/Skills check-ignore -v .claude/settings.local.json)"
+      "Bash(git -C /Users/prateekbhardwaj/Desktop/Skills check-ignore -v .claude/settings.local.json)",
+      "Bash(git -C /Users/prateekbhardwaj/Desktop/Skills diff --cached --stat)",
+      "Bash(git -C /Users/prateekbhardwaj/Desktop/Skills push origin main)",
+      "Bash(/Users/prateekbhardwaj/Desktop/Skills/context-plane/session-context-hook.sh)",
+      "Bash(python3:*)",
+      "Bash(echo:*)",
+      "Bash(ls:*)",
+      "Bash(git -C /Users/prateekbhardwaj/Desktop/Skills diff -- context-plane/session-context-hook.sh)",
+      "Bash(git -C /Users/prateekbhardwaj/Desktop/Skills log --oneline -5)",
+      "Bash(git -C:*)",
+      "Bash(bash install.sh --help)",
+      "Bash(bash install.sh --status)",
+      "Bash(bash /Users/prateekbhardwaj/Desktop/Skills/install.sh)",
+      "Bash(bash /Users/prateekbhardwaj/Desktop/Skills/install.sh --status)",
+      "Bash(bash /Users/prateekbhardwaj/Desktop/Skills/install.sh --uninstall)",
+      "Bash(~/.claude/projects/-Users-prateekbhardwaj-Desktop-Skills/context-plane-audit.log:*)",
+      "Bash(shasum:*)",
+      "WebSearch",
+      "Bash(claude update:*)",
+      "Bash(npm update:*)"
     ]
   }
 }

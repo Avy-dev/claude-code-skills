@@ -17,8 +17,14 @@ Match the user's task against these agents in priority order. The **first match 
 | 1 | `ui-specialist` | UI, frontend, CSS, layout, template, visual work | "modal", "button", "responsive", "CSS", "style", "layout", "template", `*.html`, `*.css`, `*.hbs`, `*.ejs` |
 | 1 | `bug-finder-refiner` | Code audits, bug sweeps, pre-demo quality checks | "audit", "edge cases", "before demo", "code smell", "sweep", "review for bugs" |
 | 1 | `github-sync` | Git/GitHub operations — push, PR, branch, merge | "push", "PR", "pull request", "commit", "branch", "merge", "rebase", "cherry-pick" |
-| 2 | `local-dev-runner` | Build, test, install, dev server, shell ops | "run tests", "install", "start server", "npm", "pip", "build", "compile", "lint" |
+| 1 | `db-specialist` | Database work — schema, migrations, queries, db.py | "migration", "schema", "table", "query", "SQL", "db.py", `*.sql` |
+| 1 | `test-specialist` | Testing — writing tests, pytest, debugging failures | "test", "pytest", "fixture", "coverage", "mock" |
+| 2 | `local-dev-runner` | Build, install, dev server, shell ops | "install", "start server", "npm", "pip", "build", "compile", "lint" |
 | 2 | `feature-planner` | Feature scoping, brainstorming, design exploration | "plan feature", "scope", "trade-offs", "how would we", "brainstorm", "feasibility" |
+| 2 | `mcp-tool-developer` | MCP tool creation/modification | "MCP", "tool server", `mcp_*_server.py`, "FastMCP" |
+| 2 | `rag-specialist` | RAG pipeline — embeddings, vector store, retrieval | "RAG", "embeddings", "vector", "ingest", "ChromaDB" |
+| 2 | `api-specialist` | FastAPI endpoints, auth, RBAC | "endpoint", "API route", "JWT", "RBAC", "FastAPI" |
+| 2 | `codex-agent` | Code review, coding tasks, or research via Codex CLI — **ONLY when user explicitly says "codex"** | "codex", "use codex", "codex review", "codex research" |
 | 2 | `Explore` | Codebase search, understanding, navigation | "find", "where is", "how does X work", "show me", "search for" |
 | 2 | `Plan` | Architecture, implementation strategy, system design | "design system", "implementation plan", "architect", "strategy" |
 | — | Main thread | Simple questions, trivial fixes, conversation | No strong agent signal; single-line fixes; clarification questions |
@@ -68,6 +74,12 @@ Map routing table agent names to Task tool `subagent_type` values:
 | `Plan` | `Plan` | Always (built-in) |
 | `ui-specialist` | `general-purpose` | Project-level — requires `--init-project`. Use `general-purpose` and include the agent's instructions from `.claude/agents/ui-specialist.md` in the prompt. |
 | `bug-finder-refiner` | `general-purpose` | Project-level — requires `--init-project`. Use `general-purpose` and include the agent's instructions from `.claude/agents/bug-finder-refiner.md` in the prompt. |
+| `db-specialist` | `general-purpose` | Project-level — requires `--init-project`. Use `general-purpose` and include the agent's instructions from `.claude/agents/db-specialist.md` in the prompt. |
+| `test-specialist` | `general-purpose` | Project-level — requires `--init-project`. Use `general-purpose` and include the agent's instructions from `.claude/agents/test-specialist.md` in the prompt. |
+| `mcp-tool-developer` | `general-purpose` | Project-level — requires `--init-project`. Use `general-purpose` and include the agent's instructions from `.claude/agents/mcp-tool-developer.md` in the prompt. |
+| `rag-specialist` | `general-purpose` | Project-level — requires `--init-project`. Use `general-purpose` and include the agent's instructions from `.claude/agents/rag-specialist.md` in the prompt. |
+| `api-specialist` | `general-purpose` | Project-level — requires `--init-project`. Use `general-purpose` and include the agent's instructions from `.claude/agents/api-specialist.md` in the prompt. |
+| `codex-agent` | `general-purpose` | User-level. Use `general-purpose` and include the agent's instructions from `~/.claude/agents/codex-cli.md` in the prompt. |
 
 ### Multi-Domain Tasks
 
@@ -131,6 +143,21 @@ This tracking protocol is not concurrency-safe. If multiple Claude Code sessions
 
 **User says:** "Do a full code audit before the demo"
 → `Routing to bug-finder-refiner — pre-demo quality sweep`
+
+**User says:** "Add a new migration for loyalty points"
+→ `Routing to db-specialist — schema migration`
+
+**User says:** "Write integration tests for check-in"
+→ `Routing to test-specialist — integration test creation`
+
+**User says:** "Add a new MCP tool for waitlist"
+→ `Routing to mcp-tool-developer — MCP tool creation`
+
+**User says:** "The RAG search results aren't relevant"
+→ `Routing to rag-specialist — retrieval tuning`
+
+**User says:** "Add a new API endpoint for member search"
+→ `Routing to api-specialist — endpoint creation`
 
 **User says:** "Fix the typo on line 42"
 → Main thread — trivial single-line fix
