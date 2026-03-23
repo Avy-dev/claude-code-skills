@@ -10,7 +10,8 @@
       { "source": "agent-managing.md", "target": "agent-managing.md" }
     ],
     "commands": [
-      { "source": "agent-manager.md", "target": "agent-manager.md" }
+      { "source": "agent-manager.md", "target": "agent-manager.md" },
+      { "source": "bugfix.md", "target": "bugfix.md" }
     ],
     "agents": [
       { "source": "agents/user/feature-planner.md", "target": "feature-planner.md" },
