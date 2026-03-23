@@ -15,12 +15,18 @@
     "agents": [
       { "source": "agents/user/feature-planner.md", "target": "feature-planner.md" },
       { "source": "agents/user/github-sync.md", "target": "github-sync.md" },
-      { "source": "agents/user/local-dev-runner.md", "target": "local-dev-runner.md" }
+      { "source": "agents/user/local-dev-runner.md", "target": "local-dev-runner.md" },
+      { "source": "agents/user/codex-cli.md", "target": "codex-cli.md" },
+      { "source": "agents/user/mcp-tool-developer.md", "target": "mcp-tool-developer.md" }
     ],
     "hooks": [],
     "project_templates": [
       { "source": "agents/project-templates/bug-finder-refiner.md", "target": "bug-finder-refiner.md" },
-      { "source": "agents/project-templates/ui-specialist.md", "target": "ui-specialist.md" }
+      { "source": "agents/project-templates/ui-specialist.md", "target": "ui-specialist.md" },
+      { "source": "agents/project-templates/db-specialist.md", "target": "db-specialist.md" },
+      { "source": "agents/project-templates/test-specialist.md", "target": "test-specialist.md" },
+      { "source": "agents/project-templates/rag-specialist.md", "target": "rag-specialist.md" },
+      { "source": "agents/project-templates/api-specialist.md", "target": "api-specialist.md" }
     ]
   },
   "post_install_message": "Run 'install.sh --init-project' in any project to add project-level agents."

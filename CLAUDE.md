@@ -51,15 +51,21 @@ Automatic task dispatch to specialized sub-agents. Every user message is classif
   - `feature-planner.md` — Feature scoping and planning
   - `github-sync.md` — Git/GitHub operations
   - `local-dev-runner.md` — Build, test, environment ops
+  - `codex-cli.md` — Codex CLI integration (code review, research)
+  - `mcp-tool-developer.md` — MCP tool server development
 
 - **Project-level** (`agents/project-templates/`): Copied per-project, can be customized
   - `bug-finder-refiner.md` — Code quality audits (memory: project)
   - `ui-specialist.md` — UI/UX work (memory: project)
+  - `db-specialist.md` — Database, schema, migrations (memory: project)
+  - `test-specialist.md` — Testing, pytest, fixtures (memory: project)
+  - `rag-specialist.md` — RAG pipelines, embeddings (memory: project)
+  - `api-specialist.md` — API endpoints, auth, RBAC (memory: project)
 
 **Routing Priority:**
 
-1. Tier 1 (immediate): `ui-specialist`, `bug-finder-refiner`, `github-sync`
-2. Tier 2 (domain match): `local-dev-runner`, `feature-planner`, `Explore`, `Plan`
+1. Tier 1 (immediate): `ui-specialist`, `bug-finder-refiner`, `github-sync`, `db-specialist`, `test-specialist`
+2. Tier 2 (domain match): `local-dev-runner`, `feature-planner`, `mcp-tool-developer`, `rag-specialist`, `api-specialist`, `codex-agent`, `Explore`, `Plan`
 3. Main thread: trivial fixes, clarification questions
 
 **State Tracking:**
